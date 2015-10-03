@@ -1,0 +1,9 @@
+/* Use Bootstrap error styles for widgets. */
+.has-error .rw-widget {
+  border-color: #A94442;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.has-error .rw-widget.rw-state-focus {
+  border-color: #A94442;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px #CE8483;
+}
