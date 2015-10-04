@@ -2,12 +2,12 @@ var React = require('react')
 var {Provider} = require('react-redux')
 var {Router} = require('react-router')
 
-var reducerRegistry = require('./ducks/registry')
-var coreReducers = require('./ducks/core')
-var configureStore = require('./configureStore')
 var configureRoutes = require('./configureRoutes')
+var configureStore = require('./configureStore')
+var coreReducers = require('./ducks/core')
+var ReducerRegistry = require('./ReducerRegistry')
 
-reducerRegistry.register(coreReducers)
+var reducerRegistry = new ReducerRegistry(coreReducers)
 
 // Configure hot module replacement for core reducers
 if (process.env.NODE_ENV !== 'production') {
@@ -19,8 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-var store = configureStore(reducerRegistry)
 var routes = configureRoutes(reducerRegistry)
+var store = configureStore(reducerRegistry)
 
 React.render(
   <Provider store={store}>

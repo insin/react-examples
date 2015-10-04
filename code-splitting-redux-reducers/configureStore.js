@@ -1,16 +1,17 @@
-var {createStore} = require('redux')
+var {applyMiddleware, createStore} = require('redux')
+var thunkMiddleware = require('redux-thunk')
 
 var configureReducers = require('./configureReducers')
 
-// In a real app, you'll configure your middleware here rather to create a new
-// store creation function rather than using createStore directly.
+var createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore)
 
 module.exports = function configureStore(reducerRegistry) {
-  var store = createStore(configureReducers(reducerRegistry.get()))
+  var rootReducer = configureReducers(reducerRegistry.getReducers())
+  var store = createStoreWithMiddleware(rootReducer)
 
   // Reconfigure the store's reducer when the reducer registry is changed - we
-  // depend on this for loading reducers via code splittig and for hot reloading
-  // reducer modules.
+  // depend on this for loading reducers via code splitting and for hot
+  // reloading reducer modules.
   reducerRegistry.setChangeListener((reducers) => {
     store.replaceReducer(configureReducers(reducers))
   })

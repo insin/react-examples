@@ -1,5 +1,6 @@
 {
   "stage": 2,
+  "loose": "all",
   "plugins": [
     "react-display-name"
   ],
