@@ -13,10 +13,8 @@ var webpackCompiler = webpack(webpackConfig)
 var app = express()
 
 app.use(require('webpack-dev-middleware')(webpackCompiler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true
-  }
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath
 }))
 
 app.use(require('webpack-hot-middleware')(webpackCompiler))
