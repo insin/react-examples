@@ -2,9 +2,9 @@
 
 ## Examples
 
-* [Code Splitting Redux Reducers](https://github.com/insin/react-examples/tree/master/code-splitting-redux-reducers)
+* [Code Splitting Redux Reducers](https://github.com/insin/react-examples/tree/master/code-splitting-redux-reducers#readme)
 
-* [Redux Form Components](https://github.com/insin/react-examples/tree/master/redux-form-components)
+* [Redux Form Components](https://github.com/insin/react-examples/tree/master/redux-form-components#readme)
 
 ## Running the examples
 
