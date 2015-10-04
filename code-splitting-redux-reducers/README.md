@@ -1,4 +1,4 @@
-# Code Splitting Redux Reducers Example
+# [Code Splitting Redux Reducers Example](http://insin.github.io/react-examples/code-splitting-redux-reducers/)
 
 Example of using [webpack code splitting](http://webpack.github.io/docs/code-splitting.html) with [React Router](https://github.com/rackt/react-router), including the [Redux](https://github.com/rackt/redux) reducer(s) dynamically-loaded components depend on in the same chunk and updating the Redux store's root reducer on the fly.
 
