@@ -12,8 +12,8 @@ var Admin = React.createClass({
   render() {
     var {loading, message} = this.props
     return <div className="Admin">
-      <h1>Admin</h1>
-      <p>This screen was loaded via code splitting.</p>
+      <h2>Admin</h2>
+      <p>This screen was loaded via a chunk.</p>
       <p>{message}</p>
       {loading && <p>Doing some fake loading&hellip;</p>}
     </div>

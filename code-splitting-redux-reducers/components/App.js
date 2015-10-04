@@ -11,7 +11,7 @@ var App = React.createClass({
       {this.props.message}
       <ul>
         <li><Link to="/search">Search</Link></li>
-        <li><Link to="/admin">Admin</Link></li>
+        <li><Link to="/admin">Admin</Link> (loaded on demand)</li>
       </ul>
       {this.props.children}
     </div>

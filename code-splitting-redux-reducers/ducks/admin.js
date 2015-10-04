@@ -3,7 +3,7 @@ var LOADING_SUCCESS = 'admin/LOADING_SUCCESS'
 
 function admin(state = {
   loading: false,
-  message: 'admin reducer was loaded via code splitting.'
+  message: 'admin reducer was loaded via a chunk.'
 }, action) {
   switch (action.type) {
     case LOADING:

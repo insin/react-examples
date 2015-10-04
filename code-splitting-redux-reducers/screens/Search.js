@@ -6,7 +6,7 @@ var mapStateToProps = state => state.search
 var Search = React.createClass({
   render() {
     return <div className="Search">
-      <h1>Search</h1>
+      <h2>Search</h2>
       <p>This screen was part of the entry bundle.</p>
       <p>{this.props.message}</p>
     </div>
