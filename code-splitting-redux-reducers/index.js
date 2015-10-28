@@ -1,5 +1,6 @@
 var React = require('react')
 var {Provider} = require('react-redux')
+var {render} = require('react-dom')
 var {Router} = require('react-router')
 
 var configureRoutes = require('./configureRoutes')
@@ -22,9 +23,9 @@ if (process.env.NODE_ENV !== 'production') {
 var routes = configureRoutes(reducerRegistry)
 var store = configureStore(reducerRegistry)
 
-React.render(
+render(
   <Provider store={store}>
-    {() => <Router routes={routes}/>}
+    <Router routes={routes}/>
   </Provider>,
   document.querySelector('#example')
 )
