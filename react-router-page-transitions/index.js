@@ -6,8 +6,8 @@ var {render} = require('react-dom')
 var {IndexRoute, Link, Route, Router} = require('react-router')
 
 var TRANSITIONS = [
-  {name: 'fade', time: 250},
-  {name: 'slide', time: 500}
+  {name: 'fade', enterTimeout: 1000, leaveTimeout: 500},
+  {name: 'slide', enterTimeout: 1000, leaveTimeout: 1000}
 ]
 
 var App = React.createClass({
@@ -27,14 +27,15 @@ var App = React.createClass({
       <label>Type: <select onChange={this.handleTransitionChange} value={this.state.transitionIndex}>
         {TRANSITIONS.map(({name}, i) => <option value={i} key={name}>{name}</option>)}
       </select></label>
+      asd
       <div>
-        <Link to="page1">Page 1</Link> | <Link to="page2">Page 2</Link> | <Link to="page3">Page 3</Link>
+        <Link to="/page1">Page 1</Link> | <Link to="/page2">Page 2</Link> | <Link to="/page3">Page 3</Link>
       </div>
       <CSSTransitionGroup
         className="page-container"
         component="div"
-        transitionEnterTimeout={transition.time}
-        transitionLeaveTimeout={transition.time}
+        transitionEnterTimeout={transition.enterTimeout}
+        transitionLeaveTimeout={transition.leaveTimeout}
         transitionName={transition.name}>
         {React.cloneElement(this.props.children, {key: pathname})}
       </CSSTransitionGroup>
@@ -49,4 +50,6 @@ var routes = <Route path="/" component={App}>
   <Route path="page3" component={require('./Page3')}/>
 </Route>
 
-render(<Router routes={routes}/>, document.querySelector('#example'))
+var history = require('history/lib/createHashHistory')({queryKey: false})
+
+render(<Router history={history} routes={routes}/>, document.querySelector('#example'))

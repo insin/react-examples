@@ -20,20 +20,16 @@ html, body {
 }
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity .125s ease-in;
-  transition-delay: .125s;
+  transition: opacity .5s ease-in;
+  transition-delay: .5s;
 }
 
 .fade-leave {
   opacity: 1;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
 }
 .fade-leave.fade-leave-active {
   opacity: 0.01;
-  transition: opacity .125s ease-out;
+  transition: opacity .5s ease-out;
 }
 
 .slide-enter {
@@ -41,7 +37,7 @@ html, body {
 }
 .slide-enter.slide-enter-active {
   transform: translate3d(0, 0, 0);
-  transition: all .25s ease-in;
+  transition: all 1s ease;
 }
 
 .slide-leave {
@@ -49,5 +45,5 @@ html, body {
 }
 .slide-leave.slide-leave-active {
   transform: translate3d(-100%, 0, 0);
-  transition: all .25s ease-out;
+  transition: all 1s ease;
 }
