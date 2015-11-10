@@ -2,6 +2,7 @@ require('./style.css')
 
 var CSSTransitionGroup = require('react-addons-css-transition-group')
 var React = require('react')
+var StaticContainer = require('react-static-container')
 var {render} = require('react-dom')
 var {IndexRoute, Link, Route, Router} = require('react-router')
 
@@ -9,6 +10,41 @@ var TRANSITIONS = [
   {name: 'fade', enterTimeout: 1000, leaveTimeout: 500},
   {name: 'slide', enterTimeout: 1000, leaveTimeout: 1000}
 ]
+
+// From https://github.com/rackt/react-router/blob/master/examples/animations/app.js
+var RouteCSSTransitionGroup = React.createClass({
+  contextTypes: {
+    location: React.PropTypes.object
+  },
+  getInitialState() {
+    return {
+      previousPathname: null
+    }
+  },
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextContext.location.pathname !== this.context.location.pathname) {
+      this.setState({ previousPathname: this.context.location.pathname })
+    }
+  },
+  componentDidUpdate() {
+    if (this.state.previousPathname) {
+      this.setState({previousPathname: null}) // eslint-disable-line react/no-did-update-set-state
+    }
+  },
+  render() {
+    var {children, ...props} = this.props
+    var {previousPathname} = this.state
+
+    return <CSSTransitionGroup {...props}>
+      <StaticContainer
+        key={previousPathname || this.context.location.pathname}
+        shouldUpdate={!previousPathname}
+      >
+        {children}
+      </StaticContainer>
+    </CSSTransitionGroup>
+  }
+})
 
 var App = React.createClass({
   getInitialState() {
@@ -20,7 +56,6 @@ var App = React.createClass({
     this.setState({transitionIndex: e.target.value})
   },
   render() {
-    var {pathname} = this.props.location
     var {transitionIndex} = this.state
     var transition = TRANSITIONS[transitionIndex]
     return <div className="App">
@@ -31,14 +66,14 @@ var App = React.createClass({
       <div>
         <Link to="/page1">Page 1</Link> | <Link to="/page2">Page 2</Link> | <Link to="/page3">Page 3</Link>
       </div>
-      <CSSTransitionGroup
+      <RouteCSSTransitionGroup
         className="page-container"
         component="div"
         transitionEnterTimeout={transition.enterTimeout}
         transitionLeaveTimeout={transition.leaveTimeout}
         transitionName={transition.name}>
-        {React.cloneElement(this.props.children, {key: pathname})}
-      </CSSTransitionGroup>
+        {this.props.children}
+      </RouteCSSTransitionGroup>
     </div>
   }
 })
