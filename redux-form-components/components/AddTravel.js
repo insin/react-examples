@@ -15,7 +15,7 @@ var {zeroTime} = require('../utils')
 
 var TODAY = zeroTime(new Date())
 
-var mapStateToProps = state => state
+var mapStateToProps = (state) => state
 
 var form = reduxForm({
   form: 'addTravel',
@@ -116,8 +116,7 @@ var AddTravel = React.createClass({
             id="hotel"
             label="Hotel:"
           />
-          <FormField help="Please select 'Yes' if access to a car (rented or personal) during travel and 'No' if no access to a car during travel"
-                     label="Car:">
+          <FormField help="Please select 'Yes' if access to a car (rented or personal) during travel and 'No' if no access to a car during travel" label="Car:">
             <label className="radio-inline">
               <input type="radio" name="hasCar" value="yes" onChange={fields.hasCar.onChange} disabled={fakeSaving}/> Yes
             </label>

@@ -1,7 +1,7 @@
 var React = require('react')
 var {connect} = require('react-redux')
 
-var mapStateToProps = state => state.search
+var mapStateToProps = (state) => state.search
 
 var Search = React.createClass({
   render() {
