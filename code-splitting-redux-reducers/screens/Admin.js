@@ -3,7 +3,7 @@ var {connect} = require('react-redux')
 
 var {load} = require('../ducks/admin')
 
-var mapStateToProps = state => state.admin
+var mapStateToProps = (state) => state.admin
 
 var Admin = React.createClass({
   componentDidMount() {

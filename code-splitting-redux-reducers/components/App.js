@@ -2,7 +2,7 @@ var React = require('react')
 var {connect} = require('react-redux')
 var {Link} = require('react-router')
 
-var mapStateToProps = state => state.auth
+var mapStateToProps = (state) => state.auth
 
 var App = React.createClass({
   render() {
